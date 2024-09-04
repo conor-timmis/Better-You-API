@@ -10,11 +10,27 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+if env_path.exists():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("env", env_path)
+    env = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(env)
 
+SECRET_KEY = os.getenv('SECRET_KEY')
+DATABASE_URL = os.getenv('DATABASE_URL')
+CLOUDINARY_URL = os.getenv('CLOUDINARY_URL')
+
+CLOUDINARY_STORAGE = {
+    'CLOUDINARY_URL': os.environ.get('CLOUDINARY_URL')
+}
+
+MEDIA_URL = '/media/'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
