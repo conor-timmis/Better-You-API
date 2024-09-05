@@ -15,6 +15,10 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Define env_path
+env_path = BASE_DIR / 'env.py'
+
 if env_path.exists():
     import importlib.util
     spec = importlib.util.spec_from_file_location("env", env_path)
@@ -31,6 +35,10 @@ CLOUDINARY_STORAGE = {
 
 MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'frontend/build/static'),
+]
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -69,6 +77,7 @@ INSTALLED_APPS = [
     'comments',
     'likes',
     'followers',
+    'frontend',
 ]
 
 AUTHENTICATION_BACKENDS = (
