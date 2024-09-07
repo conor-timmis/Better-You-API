@@ -5,6 +5,10 @@ from .serializers import ProfileSerializer
 
 
 class ProfileList(APIView):
+    """
+    List all profiles.
+    Profile creation is handled by Django signals; no POST method.
+    """
     def get(self, request):
         profiles = Profile.objects.all()
         serializer = ProfileSerializer(profiles, many=True)
