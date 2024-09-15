@@ -1,0 +1,1 @@
+web: gunicorn betteryou_api.wsgi
