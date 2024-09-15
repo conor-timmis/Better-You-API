@@ -1,1 +1,1 @@
-web: npm start --prefix betteryou && gunicorn betteryou_api.wsgi
+web: gunicorn betteryou_api.wsgi
