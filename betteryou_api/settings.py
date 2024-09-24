@@ -62,6 +62,10 @@ REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'drf_api.serializers.CurrentUserSerializer'
 }
 
+CORS_ALLOWED_ORIGINS = [
+    "https://8080-conortimmis-betteryou-dk58jw8fh2v.ws.codeinstitute-ide.net",
+]
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
