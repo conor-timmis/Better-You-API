@@ -103,6 +103,7 @@ INSTALLED_APPS = [
     'comments',
     'likes',
     'followers',
+    'corsheaders',
 ]
 
 AUTHENTICATION_BACKENDS = (
@@ -117,6 +118,7 @@ ACCOUNT_AUTHENTICATION_METHOD = 'username'
 ACCOUNT_EMAIL_REQUIRED = False
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
