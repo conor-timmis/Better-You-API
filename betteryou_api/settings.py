@@ -27,6 +27,7 @@ if env_path.exists():
     spec.loader.exec_module(env)
 
 SECRET_KEY = os.getenv('SECRET_KEY')
+
 DATABASE_URL = os.getenv('DATABASE_URL')
 CLOUDINARY_URL = os.getenv('CLOUDINARY_URL')
 
@@ -60,24 +61,30 @@ JWT_AUTH_COOKIE = 'my-app-auth'
 JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
 
 REST_AUTH_SERIALIZERS = {
-    'USER_DETAILS_SERIALIZER': 'drf_api.serializers.CurrentUserSerializer'
+    'USER_DETAILS_SERIALIZER': 'betteryou_api.serializers.CurrentUserSerializer'
 }
 
 CORS_ALLOWED_ORIGINS = [
     "https://8080-conortimmis-betteryou-dk58jw8fh2v.ws.codeinstitute-ide.net",
 ]
 
+if 'CLIENT_ORIGIN' in os.environ:
+    CORS_ALLOWED_ORIGINS.append(os.environ.get('CLIENT_ORIGIN'))
+else:
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        r"^https://.*\.gitpod\.io$",
+    ]
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-y32hzm&ufo(047_g#ty0pem&mkvf_jrn#-18px)7(k(3elap16'
+# SECRET_KEY = 'django-insecure-y32hzm&ufo(047_g#ty0pem&mkvf_jrn#-18px)7(k(3elap16'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", False)
 
 ALLOWED_HOSTS = ['8000-conortimmis-betteryou-n5cigzi8keh.ws.codeinstitute-ide.net', 'better-you-ec0aa381f182.herokuapp.com']
-
 
 # Application definition
 
@@ -151,7 +158,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'betteryou_api.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
@@ -177,7 +183,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
@@ -188,7 +193,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
