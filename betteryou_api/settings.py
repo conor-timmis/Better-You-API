@@ -59,6 +59,7 @@ REST_USE_JWT = True
 JWT_AUTH_SECURE = True
 JWT_AUTH_COOKIE = 'my-app-auth'
 JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
+JWT_AUTH_SAMESITE = 'None'
 
 REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'betteryou_api.serializers.CurrentUserSerializer'
@@ -86,6 +87,8 @@ DEBUG = os.environ.get("DEBUG", False)
 
 ALLOWED_HOSTS = ['8000-conortimmis-betteryou-n5cigzi8keh.ws.codeinstitute-ide.net', 'better-you-ec0aa381f182.herokuapp.com']
 
+CORS_ALLOW_CREDENTIALS = True
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -107,12 +110,12 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'dj_rest_auth',
     'dj_rest_auth.registration',
+    'corsheaders',
     'profiles',
     'posts',
     'comments',
     'likes',
     'followers',
-    'corsheaders',
 ]
 
 AUTHENTICATION_BACKENDS = (
@@ -120,11 +123,12 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
-SITE_ID = 1
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_AUTHENTICATION_METHOD = 'username'
 ACCOUNT_EMAIL_REQUIRED = False
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
