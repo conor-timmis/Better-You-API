@@ -27,7 +27,6 @@ if env_path.exists():
     spec.loader.exec_module(env)
 
 SECRET_KEY = os.getenv('SECRET_KEY')
-
 DATABASE_URL = os.getenv('DATABASE_URL')
 CLOUDINARY_URL = os.getenv('CLOUDINARY_URL')
 
@@ -67,6 +66,7 @@ REST_AUTH_SERIALIZERS = {
 
 CORS_ALLOWED_ORIGINS = [
     "https://8080-conortimmis-betteryou-dk58jw8fh2v.ws.codeinstitute-ide.net",
+    "https://better-you-ec0aa381f182.herokuapp.com",
 ]
 
 if 'CLIENT_ORIGIN' in os.environ:
