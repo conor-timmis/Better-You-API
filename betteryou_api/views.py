@@ -1,5 +1,8 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework import status
+from django.contrib.auth.models import User
 from .settings import (
     JWT_AUTH_COOKIE, JWT_AUTH_REFRESH_COOKIE, JWT_AUTH_SAMESITE,
     JWT_AUTH_SECURE
@@ -43,3 +46,20 @@ def logout_route(request):
         "message": "You have been logged out."
     })
     return clear_jwt_cookies(response)
+
+class UserDetailView(APIView):
+    """
+    View to retrieve details of the authenticated user.
+    """
+    def get(self, request):
+        user = request.user
+        if user.is_authenticated:
+            data = {
+                'username': user.username,
+                'email': user.email,
+                'date_joined': user.date_joined,
+                'last_login': user.last_login,
+            }
+            return Response(data, status=status.HTTP_200_OK)
+        else:
+            return Response({'error': 'User not authenticated'}, status=status.HTTP_401_UNAUTHORIZED)
