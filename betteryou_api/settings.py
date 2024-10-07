@@ -64,16 +64,15 @@ REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'betteryou_api.serializers.CurrentUserSerializer'
 }
 
-if 'CLIENT_ORIGIN' in os.environ:
-    CORS_ALLOWED_ORIGINS = [
-        "https://better-you-fr-3267b0b1af2f.herokuapp.com/",
-        "http://better-you-fr-3267b0b1af2f.herokuapp.com/",
-        'https://better-you-ec0aa381f182.herokuapp.com/',
-        'http://better-you-ec0aa381f182.herokuapp.com/',
-        "http://192.168.0.64:3000",
-        "http://192.168.0.12:3000",
-        "http://localhost:3000",
-    ]
+CORS_ALLOWED_ORIGINS = [
+    "https://better-you-fr-3267b0b1af2f.herokuapp.com",
+    "http://better-you-fr-3267b0b1af2f.herokuapp.com",
+    'https://better-you-ec0aa381f182.herokuapp.com',
+    'http://better-you-ec0aa381f182.herokuapp.com',
+    "http://192.168.0.64:3000",
+    "http://192.168.0.12:3000",
+    "http://localhost:3000",
+]
 
 if 'CLIENT_ORIGIN' in os.environ:
     CORS_ALLOWED_ORIGINS.append(os.environ.get('CLIENT_ORIGIN'))
