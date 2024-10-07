@@ -69,6 +69,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://better-you-fr-3267b0b1af2f.herokuapp.com",
     'https://better-you-ec0aa381f182.herokuapp.com',
     'http://better-you-ec0aa381f182.herokuapp.com',
+    'https://conortimmis-betteryou-dk58jw8fh2v.ws.codeinstitute-ide.net/',
     "http://192.168.0.64:3000",
     "http://192.168.0.12:3000",
     "http://localhost:3000",
@@ -90,7 +91,12 @@ else:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", False)
 
-ALLOWED_HOSTS = ['8000-conortimmis-betteryou-n5cigzi8keh.ws.codeinstitute-ide.net', 'better-you-ec0aa381f182.herokuapp.com']
+ALLOWED_HOSTS = [
+    '8000-conortimmis-betteryou-n5cigzi8keh.ws.codeinstitute-ide.net',
+    'better-you-ec0aa381f182.herokuapp.com',
+    'localhost',
+    '127.0.0.1',
+]
 
 CORS_ALLOW_CREDENTIALS = True
 
