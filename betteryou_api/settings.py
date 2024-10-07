@@ -94,6 +94,12 @@ ALLOWED_HOSTS = ['8000-conortimmis-betteryou-n5cigzi8keh.ws.codeinstitute-ide.ne
 
 CORS_ALLOW_CREDENTIALS = True
 
+CSRF_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SAMESITE = 'None'
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+
 # Application definition
 
 INSTALLED_APPS = [
