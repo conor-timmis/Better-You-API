@@ -70,6 +70,7 @@ CORS_ALLOWED_ORIGINS = [
     'https://better-you-ec0aa381f182.herokuapp.com',
     'http://better-you-ec0aa381f182.herokuapp.com',
     'https://conortimmis-betteryou-dk58jw8fh2v.ws.codeinstitute-ide.net/',
+    'https://8000-conortimmis-betteryouap-n0ytksw6y1m.ws.codeinstitute-ide.net',
     "http://192.168.0.64:3000",
     "http://192.168.0.12:3000",
     "http://localhost:3000",
@@ -98,6 +99,7 @@ ALLOWED_HOSTS = [
     'better-you-ec0aa381f182.herokuapp.com',
     'localhost',
     '127.0.0.1',
+    '8000-conortimmis-betteryouap-n0ytksw6y1m.ws.codeinstitute-ide.net',
 ]
 
 CORS_ALLOW_CREDENTIALS = True
