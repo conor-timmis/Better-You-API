@@ -102,6 +102,12 @@ ALLOWED_HOSTS = [
     '8000-conortimmis-betteryouap-n0ytksw6y1m.ws.codeinstitute-ide.net',
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-conortimmis-betteryouap-n0ytksw6y1m.ws.codeinstitute-ide.net',
+    'https://better-you-ec0aa381f182.herokuapp.com',
+    'http://localhost:3000',
+]
+
 CORS_ALLOW_CREDENTIALS = True
 
 CSRF_COOKIE_SAMESITE = 'None'
