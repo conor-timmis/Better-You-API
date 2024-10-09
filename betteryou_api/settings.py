@@ -112,7 +112,14 @@ CORS_ALLOW_CREDENTIALS = True
 
 CSRF_COOKIE_SAMESITE = 'None'
 SESSION_COOKIE_SAMESITE = 'None'
-
+CSRF_COOKIE_NAME = 'csrftoken'
+CSRF_HEADER_NAME = 'HTTP_X_CSRFTOKEN'
+CSRF_TRUSTED_ORIGINS = [
+    'https://conortimmis-betteryou-dk58jw8fh2v.ws.codeinstitute-ide.net/',
+    'https://conortimmis-betteryou-dk58jw8fh2v.ws.codeinstitute-ide.net/',
+    'http://localhost:3000',
+]
+CSRF_COOKIE_HTTPONLY = False
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 
