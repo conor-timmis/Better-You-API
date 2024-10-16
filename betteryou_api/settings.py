@@ -89,7 +89,8 @@ if 'CLIENT_ORIGIN_DEV' in os.environ:
 # SECRET_KEY = 'django-insecure-y32hzm&ufo(047_g#ty0pem&mkvf_jrn#-18px)7(k(3elap16'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG", False)
+# DEBUG = os.environ.get("DEBUG", False)
+DEBUG = True
 
 ALLOWED_HOSTS = [
     '8000-conortimmis-betteryou-n5cigzi8keh.ws.codeinstitute-ide.net',
