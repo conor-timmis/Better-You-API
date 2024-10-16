@@ -101,8 +101,13 @@ else:
 DEBUG = os.environ.get("DEBUG", False)
 
 ALLOWED_HOSTS = [
-   os.environ.get('ALLOWED_HOST'),
-   'localhost',
+    '8000-conortimmis-betteryou-n5cigzi8keh.ws.codeinstitute-ide.net',
+    'better-you-ec0aa381f182.herokuapp.com',
+    'localhost',
+    '127.0.0.1',
+    '8000-conortimmis-betteryouap-n0ytksw6y1m.ws.codeinstitute-ide.net',
+    'localhost',
+     os.environ.get('ALLOWED_HOST'),
 ]
 
 CSRF_TRUSTED_ORIGINS = [
