@@ -36,11 +36,26 @@ def home_route(request):
 
 @api_view(['POST'])
 def logout_route(request):
-    """ Route for logout of API. """
-    response = Response({
-        "message": "You have been logged out."
-    })
-    return clear_jwt_cookies(response)
+    response = Response()
+    response.set_cookie(
+        key=JWT_AUTH_COOKIE,
+        value='',
+        httponly=True,
+        expires='Thu, 01 Jan 1970 00:00:00 GMT',
+        max_age=0,
+        samesite=JWT_AUTH_SAMESITE,
+        secure=JWT_AUTH_SECURE,
+    )
+    response.set_cookie(
+        key=JWT_AUTH_REFRESH_COOKIE,
+        value='',
+        httponly=True,
+        expires='Thu, 01 Jan 1970 00:00:00 GMT',
+        max_age=0,
+        samesite=JWT_AUTH_SAMESITE,
+        secure=JWT_AUTH_SECURE,
+    )
+    return response
 
 class UserDetailView(APIView):
     """ View to retrieve details of the authenticated user. """

@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 import os
 import dj_database_url
 from pathlib import Path
+import re
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -80,6 +81,16 @@ if 'CLIENT_ORIGIN_DEV' in os.environ:
         r"^https://.*\.codeinstitute-ide\.net$",
     ]
 
+if 'CLIENT_ORIGIN_DEV' in os.environ:
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        r"^https://.*\.codeinstitute-ide\.net$",
+    ]
+else:
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        r"^https://.*\.codeinstitute-ide\.net$",
+    ]
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -90,11 +101,8 @@ if 'CLIENT_ORIGIN_DEV' in os.environ:
 DEBUG = os.environ.get("DEBUG", False)
 
 ALLOWED_HOSTS = [
-    '8000-conortimmis-betteryou-n5cigzi8keh.ws.codeinstitute-ide.net',
-    'better-you-ec0aa381f182.herokuapp.com',
-    'localhost',
-    '127.0.0.1',
-    '8000-conortimmis-betteryouap-n0ytksw6y1m.ws.codeinstitute-ide.net',
+   os.environ.get('ALLOWED_HOST'),
+   'localhost',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
