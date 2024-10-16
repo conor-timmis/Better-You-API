@@ -1,10 +1,10 @@
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
-from .views import home_route, logout_route
+from .views import root_route, logout_route
 
 urlpatterns = [
-    path('', home_route),
+    path('', root_route),
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('dj-rest-auth/logout/', logout_route),
