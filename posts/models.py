@@ -1,8 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
-
 class Post(models.Model):
     """
     Post model related to a User (owner).
@@ -15,6 +13,20 @@ class Post(models.Model):
     content = models.TextField(blank=True)
     image = models.ImageField(
         upload_to='images/', default='../default_post_f67djn', blank=True
+    )
+    tags = models.CharField(
+        max_length=100,
+        choices=[
+            ('Mindfulness', 'Mindfulness'),
+            ('Motivation', 'Motivation'),
+            ('Personal Growth', 'Personal Growth'),
+            ('Time Management', 'Time Management'),
+            ('Productivity', 'Productivity'),
+            ('Goal Setting', 'Goal Setting'),
+            ('Career Development', 'Career Development'),
+            ('Leadership', 'Leadership')
+        ],
+        default='Personal Growth'
     )
 
     class Meta:
