@@ -2,10 +2,12 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 
-# Create your models here.
-
 
 class Profile(models.Model):
+    """
+    Profile model class: When User is created,
+    the Profile is created (OneToOneField)
+    """
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -22,6 +24,10 @@ class Profile(models.Model):
         return f"{self.owner}'s profile"
 
 def create_profile(sender, instance, created, **kwargs):
+    """
+    Create Profile function: Owner is assigned
+    upon creation of Profile
+    """
     if created:
         Profile.objects.create(owner=instance)
 
