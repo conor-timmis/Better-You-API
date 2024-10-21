@@ -2,11 +2,10 @@ from django.contrib.humanize.templatetags.humanize import naturaltime
 from rest_framework import serializers
 from .models import Comment
 
-
 class CommentSerializer(serializers.ModelSerializer):
     """
     Handles Comment model
-    Adds three extra fields when returning a list of comments
+    Adds extra fields when returning a list of comments
     """
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()

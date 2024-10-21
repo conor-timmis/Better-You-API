@@ -1,17 +1,12 @@
 from rest_framework import serializers
-from posts.models import Post, PostRating
+from posts.models import Post
 from likes.models import Like
-from django.db.models import Avg
 
-class PostRatingSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = PostRating
-        fields = ['rating']
 
 class PostSerializer(serializers.ModelSerializer):
     """
-    Serializer for the Post model, including owner, profile,
-    like information, and rating information.
+    Serializer for the Post model, including owner, profile, 
+    and like information. Validates image size and dimensions.
     """
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
@@ -20,16 +15,20 @@ class PostSerializer(serializers.ModelSerializer):
     like_id = serializers.SerializerMethodField()
     likes_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
-    average_rating = serializers.SerializerMethodField()
-    ratings = PostRatingSerializer(many=True, read_only=True)
-
+    
     def validate_image(self, value):
         if value.size > 1024 * 1024 * 2:
-            raise serializers.ValidationError('Image size larger than 2MB!')
+            raise serializers.ValidationError(
+                'Image size larger than 2MB!'
+                )
         if value.image.height > 4096:
-            raise serializers.ValidationError('Image height larger than 4096px!')
+            raise serializers.ValidationError(
+                'Image height larger than 4096px!'
+            )
         if value.image.width > 4096:
-            raise serializers.ValidationError('Image width larger than 4096px!')
+            raise serializers.ValidationError(
+                'Image width larger than 4096px!'
+            )
         return value
 
     def get_is_owner(self, obj):
@@ -39,13 +38,11 @@ class PostSerializer(serializers.ModelSerializer):
     def get_like_id(self, obj):
         user = self.context['request'].user
         if user.is_authenticated:
-            like = Like.objects.filter(owner=user, post=obj).first()
+            like = Like.objects.filter(
+                owner=user, post=obj
+            ).first()
             return like.id if like else None
         return None
-
-    def get_average_rating(self, obj):
-        average = obj.ratings.aggregate(Avg('rating'))['rating__avg']
-        return average if average is not None else 0
 
     class Meta:
         model = Post
@@ -54,5 +51,4 @@ class PostSerializer(serializers.ModelSerializer):
             'profile_image', 'created_at', 'updated_at',
             'title', 'content', 'image', 'like_id',
             'likes_count', 'comments_count', 'tags',
-            'average_rating', 'ratings',
         ]
