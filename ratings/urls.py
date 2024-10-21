@@ -1,6 +1,7 @@
-from django.urls import path, include
+from django.urls import path
+from .views import RatingCreate, RatingDetail
 
 urlpatterns = [
-    path('posts/', include('posts.urls')),
-    path('ratings/', include('ratings.urls')),
+    path('ratings/', RatingCreate.as_view(), name='rating-create'),
+    path('ratings/<int:pk>/', RatingDetail.as_view(), name='rating-detail'),
 ]
