@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from posts.models import Post, PostRating
 from likes.models import Like
+from django.db.models import Avg
 
 class PostRatingSerializer(serializers.ModelSerializer):
     class Meta:
@@ -43,10 +44,8 @@ class PostSerializer(serializers.ModelSerializer):
         return None
 
     def get_average_rating(self, obj):
-        ratings = obj.ratings.all()
-        if ratings.exists():
-            return sum(rating.rating for rating in ratings) / ratings.count()
-        return 0
+        average = obj.ratings.aggregate(Avg('rating'))['rating__avg']
+        return average if average is not None else 0
 
     class Meta:
         model = Post

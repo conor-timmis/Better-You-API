@@ -26,3 +26,6 @@ class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = CommentDetailSerializer
     queryset = Comment.objects.all()
+
+    def perform_update(self, serializer):
+        serializer.save(owner=self.request.user)
