@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from posts.models import Post
 
+
 class Comment(models.Model):
     """
     Comment model, related to User and Post
@@ -11,7 +12,6 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     content = models.TextField()
-    rating = models.PositiveIntegerField(default=0)
 
     class Meta:
         ordering = ['-created_at']
