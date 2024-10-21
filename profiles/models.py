@@ -14,7 +14,7 @@ class Profile(models.Model):
     name = models.CharField(max_length=255, blank=True)
     content = models.TextField(blank=True)
     image = ResizedImageField(
-        size=[300, 300], quality=75, upload_to='profiles/', force_format='WEBP',
+        size=[300, 300], quality=75, upload_to='profiles/',
         default='../default_profile_rgvmnf', blank=True
     )
     

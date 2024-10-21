@@ -14,7 +14,7 @@ class Post(models.Model):
     content = models.TextField(blank=True)
     image = ResizedImageField(
         size=[300, 300], quality=75, upload_to='posts/', 
-        force_format='WEBP', default='../default_post_f67djn', blank=True
+        default='../default_post_f67djn', blank=True
     )
     tags = models.CharField(
         max_length=100,
