@@ -1,7 +1,7 @@
 from rest_framework import generics, permissions, filters
 from django_filters.rest_framework import DjangoFilterBackend
 from betteryou_api.permissions import IsOwnerOrReadOnly
-from django.db.models import Count
+from django.db.models import Count, Avg
 from .models import Post, PostRating
 from .serializers import PostSerializer, PostRatingSerializer
 
@@ -13,7 +13,8 @@ class PostList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Post.objects.annotate(
         likes_count=Count('likes', distinct=True),
-        comments_count=Count('comment', distinct=True)
+        comments_count=Count('comments', distinct=True),
+        average_rating=Avg('postrating__rating')
     ).order_by('-created_at')
     filter_backends = [
         filters.OrderingFilter,
@@ -23,6 +24,7 @@ class PostList(generics.ListCreateAPIView):
     ordering_fields = [
         'likes_count',
         'comments_count',
+        'average_rating',
         'likes__created_at',
     ]
     filterset_fields = [
@@ -48,7 +50,8 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Post.objects.annotate(
         likes_count=Count('likes', distinct=True),
-        comments_count=Count('comment', distinct=True)
+        comments_count=Count('comments', distinct=True),
+        average_rating=Avg('postrating__rating')
     ).order_by('-created_at')
 
 class PostRatingCreate(generics.CreateAPIView):
