@@ -2,8 +2,8 @@ from rest_framework import generics, permissions, filters
 from django_filters.rest_framework import DjangoFilterBackend
 from betteryou_api.permissions import IsOwnerOrReadOnly
 from django.db.models import Count
-from .models import Post
-from .serializers import PostSerializer
+from .models import Post, PostRating
+from .serializers import PostSerializer, PostRatingSerializer
 
 class PostList(generics.ListCreateAPIView):
     """
@@ -50,3 +50,24 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
         likes_count=Count('likes', distinct=True),
         comments_count=Count('comment', distinct=True)
     ).order_by('-created_at')
+
+class PostRatingCreate(generics.CreateAPIView):
+    """
+    Create a rating for a post.
+    """
+    serializer_class = PostRatingSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+class PostRatingList(generics.ListAPIView):
+    """
+    List ratings for a post.
+    """
+    serializer_class = PostRatingSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+    def get_queryset(self):
+        post_id = self.kwargs['post_id']
+        return PostRating.objects.filter(post_id=post_id)

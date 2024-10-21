@@ -36,3 +36,17 @@ class Post(models.Model):
 
     def __str__(self):
         return f'{self.id} {self.title}'
+
+
+class PostRating(models.Model):
+    """
+    PostRating model for user ratings on posts.
+    """
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='ratings')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    rating = models.IntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        unique_together = ['post', 'user']
