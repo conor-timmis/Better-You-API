@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django_resized import ResizedImageField
 
+
 class Post(models.Model):
     """
     Post model related to a User (owner).
@@ -13,7 +14,7 @@ class Post(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField(blank=True)
     image = ResizedImageField(
-        size=[300, 300], quality=75, upload_to='posts/', 
+        size=[300, 300], quality=75, upload_to='posts/',
         default='../default_post_f67djn', blank=True
     )
     tags = models.CharField(

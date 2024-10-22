@@ -5,7 +5,8 @@ from .models import Follower
 
 class FollowerSerializer(serializers.ModelSerializer):
     """
-    The create method ensures that each owner/user can only follow each 'followed' user once.
+    The create method ensures that each owner/user can only
+    follow each 'followed' user once.
     """
     owner = serializers.ReadOnlyField(source='owner.username')
     followed_name = serializers.ReadOnlyField(source='followed.username')
