@@ -12,6 +12,7 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     content = models.TextField()
+    rating = models.IntegerField(default=0)
 
     class Meta:
         ordering = ['-created_at']
