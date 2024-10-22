@@ -5,7 +5,7 @@ from likes.models import Like
 
 class PostSerializer(serializers.ModelSerializer):
     """
-    Serializer for the Post model, including owner, profile, 
+    Serializer for the Post model, including owner, profile,
     and like information. Validates image size and dimensions.
     """
     owner = serializers.ReadOnlyField(source='owner.username')
@@ -15,7 +15,7 @@ class PostSerializer(serializers.ModelSerializer):
     like_id = serializers.SerializerMethodField()
     likes_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
-    
+
     def validate_image(self, value):
         if value.size > 1024 * 1024 * 2:
             raise serializers.ValidationError(

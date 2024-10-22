@@ -36,6 +36,7 @@ class ProfileList(generics.ListAPIView):
         'following_total',
     ]
 
+
 class ProfileDetail(generics.RetrieveUpdateAPIView):
     """
     Retrieve and update a profile instance.
