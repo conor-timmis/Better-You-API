@@ -286,11 +286,28 @@ Manual testing was performed throughout the development process to ensure that a
 
 ### Code Validation
 
-The code I wrote was also passed through validators/linters at the end to ensure adherence to coding standards and best practices, ultimately aiming for robust and maintainable code. All files have been formatted according to PEP 8 standards and corrected, with the exception of the settings.py file in the betteryou_api directory. I found that some lines, particularly those containing lengthy URLs in the ALLOWED_HOSTS section, exceeded the recommended line length for formatting. This is just one example; there are several similar instances within the settings file.
+The code I wrote was also passed through validators/linters at the end to ensure adherence to coding standards and best practices, ultimately aiming for robust and maintainable code. All files have been formatted according to PEP8 standards and corrected, with the exception of the settings.py file in the betteryou_api directory. I found that some lines, particularly those containing lengthy URLs in the ALLOWED_HOSTS section, exceeded the recommended line length for formatting. This is just one example; there are several similar instances within the settings file.
 
-| Language   | Validation Method | Outcome |
-| --- | --- | --- |
-| Python | [CI Python Linter](https://pep8ci.herokuapp.com/) | Whitespace, line length and number of blank line errors. All errors resolved |
+| Language | File | Validation Method | Outcome |
+| --- | --- | --- | --- |
+| Python | betteryou_api settings.py | [CI Python Linter](https://pep8ci.herokuapp.com/) | Lines that are too long, due to inability to format the URLs, otherwise error-less |
+| Python | comments models.py | [CI Python Linter](https://pep8ci.herokuapp.com/) | All errors resolved |
+| Python | comments serializers.py | [CI Python Linter](https://pep8ci.herokuapp.com/) | All errors resolved |
+| Python | comments urls.py  | [CI Python Linter](https://pep8ci.herokuapp.com/) | All errors resolved |
+| Python | comments views.py  | [CI Python Linter](https://pep8ci.herokuapp.com/) | All errors resolved |
+| Python | followers models.py | [CI Python Linter](https://pep8ci.herokuapp.com/) | All errors resolved |
+| Python | followers serializers.py | [CI Python Linter](https://pep8ci.herokuapp.com/) | All errors resolved |
+| Python | followers urls.py  | [CI Python Linter](https://pep8ci.herokuapp.com/) | All errors resolved |
+| Python | followers views.py  | [CI Python Linter](https://pep8ci.herokuapp.com/) | All errors resolved |
+| Python | likes models.py | [CI Python Linter](https://pep8ci.herokuapp.com/) |  All errors resolved |
+| Python | likes serializers.py | [CI Python Linter](https://pep8ci.herokuapp.com/) | All errors resolved |
+| Python | likes urls.py  | [CI Python Linter](https://pep8ci.herokuapp.com/) | All errors resolved |
+| Python | likes views.py  | [CI Python Linter](https://pep8ci.herokuapp.com/) | All errors resolved |
+| Python | posts models.py | [CI Python Linter](https://pep8ci.herokuapp.com/) | All errors resolved |
+| Python | posts serializers.py | [CI Python Linter](https://pep8ci.herokuapp.com/) | All errors resolved |
+| Python | posts urls.py  | [CI Python Linter](https://pep8ci.herokuapp.com/) | All errors resolved |
+| Python | posts views.py  | [CI Python Linter](https://pep8ci.herokuapp.com/) | All errors resolved |
+
 
 ## 5. Bugs
 
@@ -348,7 +365,7 @@ I did not bump into any bugs in terms of the backend, I did struggle setting up 
 ### Deployment
 
 
-This project was deployed to the [Heroku](https://better-you-ec0aa381f182.herokuapp.com/): hosting platform.
+This project was deployed to the [Heroku](https://better-you-ec0aa381f182.herokuapp.com/) hosting platform.
 
 ## 7. Credits
 
