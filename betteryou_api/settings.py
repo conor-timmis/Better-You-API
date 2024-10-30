@@ -139,6 +139,7 @@ INSTALLED_APPS = [
     'comments',
     'likes',
     'followers',
+    'contacts',
 ]
 
 AUTHENTICATION_BACKENDS = (
