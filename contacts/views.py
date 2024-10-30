@@ -1,5 +1,5 @@
 from rest_framework import generics, permissions
-from betteryou_api_api.permissions import IsOwnerOrReadOnly
+from betteryou_api.permissions import IsOwnerOrReadOnly
 from .models import Contact
 from .serializers import ContactSerializer
 
