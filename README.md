@@ -27,7 +27,7 @@ To visit the deployed Better You site [click here](https://better-you-fr-3267b0b
 6. [Set Up and Deployment](#6-set-up-and-deployment)
 7. [Credits](#7-credits)
 
-## 1. Purpose#
+## 1. Purpose
 
 
 The goal of this API is to provide the required data to the front-end application: Better You, the dedicated space for people looking into self improvement.
