@@ -105,22 +105,24 @@ The table below provides an overview of the available endpoints, the supported H
 
 | Endpoint                                | Allowed Methods           | Authentication/Authorization      | Description                                |
 |-----------------------------------------|---------------------------|-----------------------------------|--------------------------------------------|
-| `/`                                     | GET                       | No authentication required        | Root route or home page                   |
-| `/admin/`                               | GET, POST, etc.          | Admin authentication required     | Admin site                                 |
-| `/api-auth/`                           | GET, POST, etc.          | No authentication required        | REST framework authentication               |
-| `/dj-rest-auth/logout/`                | POST                      | Authentication required           | User logout                                |
-| `/dj-rest-auth/`                       | Various                   | No authentication required        | DJ Rest Auth endpoints                     |
-| `/dj-rest-auth/registration/`          | POST                      | No authentication required        | User registration endpoint                 |
-| `/profiles/`                            | GET, POST                 | Authentication required           | List all profiles or create a profile     |
-| `/profiles/<int:pk>/`                  | GET, PATCH, DELETE        | Authentication required           | Retrieve, update, or delete a profile     |
-| `/comments/`                            | GET, POST                 | Authentication required           | List all comments or create a comment     |
-| `/comments/<int:pk>/`                  | GET, PATCH, DELETE        | Authentication required           | Retrieve, update, or delete a comment     |
-| `/posts/`                               | GET, POST                 | Authentication required           | List all posts or create a post           |
-| `/posts/<int:pk>/`                      | GET, PATCH, DELETE        | Authentication required           | Retrieve, update, or delete a post        |
+| `/`                                     | GET                       | No authentication required        | Root route or home page                    |
+| `/admin/`                               | GET, POST, etc.           | Admin authentication required     | Admin site                                 |
+| `/api-auth/`                            | GET, POST, etc.           | No authentication required        | REST framework authentication              |
+| `/dj-rest-auth/logout/`                 | POST                      | Authentication required           | User logout                                |
+| `/dj-rest-auth/`                        | Various                   | No authentication required        | DJ Rest Auth endpoints                     |
+| `/dj-rest-auth/registration/`           | POST                      | No authentication required        | User registration endpoint                 |
+| `/profiles/`                            | GET, POST                 | Authentication required           | List all profiles or create a profile      |
+| `/profiles/<int:pk>/`                   | GET, PATCH, DELETE        | Authentication required           | Retrieve, update, or delete a profile      |
+| `/comments/`                            | GET, POST                 | Authentication required           | List all comments or create a comment      |
+| `/comments/<int:pk>/`                   | GET, PATCH, DELETE        | Authentication required           | Retrieve, update, or delete a comment      |
+| `/posts/`                               | GET, POST                 | Authentication required           | List all posts or create a post            |
+| `/posts/<int:pk>/`                      | GET, PATCH, DELETE        | Authentication required           | Retrieve, update, or delete a post         |
 | `/followers/`                           | GET, POST                 | Authentication required           | List all followers or add a follower       |
-| `/followers/<int:pk>/`                  | DELETE                    | Authentication required           | Unfollow a user                           |
-| `/likes/`                               | GET, POST                 | Authentication required           | List all likes or add a like              |
-| `/likes/<int:pk>/`                      | DELETE                    | Authentication required           | Remove a like                             |
+| `/followers/<int:pk>/`                  | DELETE                    | Authentication required           | Unfollow a user                            |
+| `/likes/`                               | GET, POST                 | Authentication required           | List all likes or add a like               |
+| `/likes/<int:pk>/`                      | DELETE                    | Authentication required           | Remove a like                              |
+| `/contacts/`                            | GET, POST                 | Authentication required           | List all contacts or create a contact      |
+| `/contacts/<int:pk>/`                   | GET, PATCH, DELETE        | Authentication required           | Retrieve, update, or delete a contact      |
 
 
 ### Filtering and Search Options
@@ -134,18 +136,21 @@ To enhance the flexibility of the API, several endpoints provide options for fil
 
 To enhance the flexibility of the API, several endpoints provide options for filtering and sorting results. This allows the frontend to tailor its requests to specific needs, retrieving only the most relevant data. The table below outlines the filtering and search capabilities of the key endpoints:
 
-| Endpoint                                  | Filtering Options                                         | Search Options                                     |
+| Endpoint                                  | Filtering Options                                       | Search Options                                    |
 |-------------------------------------------|---------------------------------------------------------|---------------------------------------------------|
 | dj-rest-auth/login                        | None                                                    | None                                              |
 | dj-rest-auth/logout                       | None                                                    | None                                              |
 | dj-rest-auth/registration/                | None                                                    | None                                              |
-| profiles/                                 | Sort profiles by any field, defaults to sorting by ID   | Search by User                                           |
+| profiles/                                 | Sort profiles by any field, defaults to sorting by ID   | Search by User                                    |
 | profile/<int:id>/                         | None                                                    | None                                              |
 | profile/<int:id>/followers/               | Filter by follower's profile ID, sort by any field      | None                                              |
 | posts/                                    | Filter by author, date created, or tags                 | Search by title, content, or author name          |
 | posts/create/                             | None                                                    | None                                              |
 | posts/<int:id>/                           | None                                                    | None                                              |
 | posts/<int:id>/comments/                  | Sort comments by creation date, filter by author ID     | None                                              |
+| contacts/                                 | Filter by reason, created_at, user ID                   | Search by reason, content, username               |
+| contact/create/                           | None                                                    | None                                              |
+| contacts/<int:id>/                        | Sort comments by creation date, filter by author ID     | None                                              |
 
 
 ## Pagination
@@ -307,6 +312,10 @@ The code I wrote was also passed through validators/linters at the end to ensure
 | Python | posts serializers.py | [CI Python Linter](https://pep8ci.herokuapp.com/) | All errors resolved |
 | Python | posts urls.py  | [CI Python Linter](https://pep8ci.herokuapp.com/) | All errors resolved |
 | Python | posts views.py  | [CI Python Linter](https://pep8ci.herokuapp.com/) | All errors resolved |
+| Python | contacts models.py | [CI Python Linter](https://pep8ci.herokuapp.com/) | All errors resolved |
+| Python | contacts serializers.py | [CI Python Linter](https://pep8ci.herokuapp.com/) | All errors resolved |
+| Python | contacts urls.py  | [CI Python Linter](https://pep8ci.herokuapp.com/) | All errors resolved |
+| Python | contacts views.py  | [CI Python Linter](https://pep8ci.herokuapp.com/) | All errors resolved |
 
 
 ## 5. Bugs
