@@ -12,9 +12,9 @@ class ProfileList(generics.ListAPIView):
     No Create view (post method), as profile creation handled by django signals
     """
     queryset = Profile.objects.annotate(
-        followers_total=Count('owner__followed', distinct=True),
-        following_total=Count('owner__following', distinct=True),
-        posts_total=Count('owner__post', distinct=True)
+        followers_count=Count('owner__followed', distinct=True),
+        following_count=Count('owner__following', distinct=True),
+        posts_count=Count('owner__post', distinct=True)
     ).order_by('-created_at')
     serializer_class = ProfileSerializer
     filter_backends = [
@@ -29,11 +29,11 @@ class ProfileList(generics.ListAPIView):
         'owner__followed__owner__profile',
     ]
     ordering_fields = [
-        'posts_total',
+        'posts_count',
         'owner__following__created_at',
         'owner__followed__created_at',
-        'followers_total',
-        'following_total',
+        'followers_count',
+        'following_count',
     ]
 
 
