@@ -4,9 +4,11 @@ from django.contrib.auth.models import User
 
 class Contact(models.Model):
     """
-    Comment model, related to User
+    Contact model, related to User
     """
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(
+        User, on_delete=models.CASCADE, null=True, blank=True
+    )
     reason = models.CharField(max_length=50)
     content = models.TextField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -16,4 +18,8 @@ class Contact(models.Model):
         ordering = ["-created_at"]
 
     def __str__(self):
-        return f"{self.owner} : {self.reason}"
+        return (
+            f"{self.owner} : {self.reason}"
+            if self.owner
+            else f"Anonymous : {self.reason}"
+        )

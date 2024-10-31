@@ -9,11 +9,14 @@ class ContactList(generics.ListCreateAPIView):
     List contacts or create a contact if logged in.
     """
     serializer_class = ContactSerializer
-    permission_classes = [IsOwnerOrReadOnly]
+    permission_classes = [permissions.AllowAny]
     queryset = Contact.objects.all()
 
     def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+        if self.request.user.is_authenticated:
+            serializer.save(owner=self.request.user)
+        else:
+            serializer.save()
 
 
 class ContactDetail(generics.RetrieveUpdateDestroyAPIView):
