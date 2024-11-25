@@ -60,26 +60,40 @@ JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
 JWT_AUTH_SAMESITE = 'None'
 
 REST_AUTH_SERIALIZERS = {
-    'USER_DETAILS_SERIALIZER': 'betteryou_api.serializers.CurrentUserSerializer'
+    'USER_DETAILS_SERIALIZER': (
+        'betteryou_api.serializers.CurrentUserSerializer'
+    )
 }
+
 
 CORS_ALLOWED_ORIGINS = [
     "https://better-you-fr-3267b0b1af2f.herokuapp.com",
     "http://better-you-fr-3267b0b1af2f.herokuapp.com",
-    'https://better-you-ec0aa381f182.herokuapp.com',
-    'http://better-you-ec0aa381f182.herokuapp.com',
-    'https://conortimmis-betteryou-dk58jw8fh2v.ws.codeinstitute-ide.net',
-    'https://8000-conortimmis-betteryouap-n0ytksw6y1m.ws.codeinstitute-ide.net',
+    "https://better-you-ec0aa381f182.herokuapp.com",
+    "http://better-you-ec0aa381f182.herokuapp.com",
+    (
+        "https://conortimmis-betteryou-"
+        "dk58jw8fh2v.ws.codeinstitute-ide.net"
+    ),
+    (
+        "https://8000-conortimmis-"
+        "betteryouap-n0ytksw6y1m.ws.codeinstitute-ide.net"
+    ),
     "http://192.168.0.64:3000",
     "http://192.168.0.12:3000",
     "http://localhost:3000",
 ]
 
+
 if 'CLIENT_ORIGIN' in os.environ:
     CORS_ALLOWED_ORIGINS.append(os.environ.get('CLIENT_ORIGIN'))
 
 if 'CLIENT_ORIGIN_DEV' in os.environ:
-    extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
+    extracted_url = re.match(
+        r'^.+-',
+        os.environ.get('CLIENT_ORIGIN_DEV', ''),
+        re.IGNORECASE
+    ).group(0)
     CORS_ALLOWED_ORIGIN_REGEXES = [
         r"^https://.*\.codeinstitute-ide\.net$",
     ]
@@ -99,11 +113,14 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     '8000-conortimmis-betteryouap-n0ytksw6y1m.ws.codeinstitute-ide.net',
     'localhost',
-     os.environ.get('ALLOWED_HOST'),
+    os.environ.get(
+         'ALLOWED_HOST'
+         ),
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-conortimmis-betteryouap-n0ytksw6y1m.ws.codeinstitute-ide.net',
+    'https://8000-conortimmis-'
+    'betteryouap-n0ytksw6y1m.ws.codeinstitute-ide.net',
     'https://better-you-ec0aa381f182.herokuapp.com',
     'http://localhost:3000',
 ]
@@ -192,18 +209,31 @@ DATABASES = {
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': (
+            'django.contrib.auth.password_validation.'
+            'UserAttributeSimilarityValidator'
+        ),
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': (
+            'django.contrib.auth.password_validation.'
+            'MinimumLengthValidator'
+        ),
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': (
+            'django.contrib.auth.password_validation.'
+            'CommonPasswordValidator'
+        ),
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': (
+            'django.contrib.auth.password_validation.'
+            'NumericPasswordValidator'
+        ),
     },
 ]
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
