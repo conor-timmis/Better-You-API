@@ -88,8 +88,6 @@ if 'CLIENT_ORIGIN_DEV' in os.environ:
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-y32hzm&ufo(047_g#ty0pem&mkvf_jrn#-18px)7(k(3elap16'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", False)
