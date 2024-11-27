@@ -295,7 +295,7 @@ The code I wrote was also passed through validators/linters at the end to ensure
 
 | Language | File | Validation Method | Outcome |
 | --- | --- | --- | --- |
-| Python | betteryou_api settings.py | [CI Python Linter](https://pep8ci.herokuapp.com/) | Lines that are too long, due to inability to format the URLs, otherwise error-less |
+| Python | betteryou_api settings.py | [CI Python Linter](https://pep8ci.herokuapp.com/) | All errors resolved |
 | Python | comments models.py | [CI Python Linter](https://pep8ci.herokuapp.com/) | All errors resolved |
 | Python | comments serializers.py | [CI Python Linter](https://pep8ci.herokuapp.com/) | All errors resolved |
 | Python | comments urls.py  | [CI Python Linter](https://pep8ci.herokuapp.com/) | All errors resolved |
