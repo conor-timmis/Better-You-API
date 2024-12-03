@@ -107,7 +107,7 @@ if 'CLIENT_ORIGIN_DEV' in os.environ:
 DEBUG = os.environ.get("DEBUG", False)
 
 ALLOWED_HOSTS = [
-    '8000-conortimmis-betteryou-n5cigzi8keh.ws.codeinstitute-ide.net',
+    '8000-conortimmis-betteryouap-3b5x6yjhqz9.ws.codeinstitute-ide.net',
     'better-you-ec0aa381f182.herokuapp.com',
     'localhost',
     '127.0.0.1',
